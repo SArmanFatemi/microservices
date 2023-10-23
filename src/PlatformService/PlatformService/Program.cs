@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using PlatformService.Data;
 using PlatformService.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence();
+builder.Services.AddDataServices();
 
 var app = builder.Build();
 
