@@ -16,7 +16,7 @@ public class PlatformsController : ControllerBase
         return Ok(platforms.ToResponses());
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = nameof(GetById))]
     public async Task<ActionResult<PlatformResponse>> GetById([FromServices] IPlatformRepository platformRepository, int id, CancellationToken cancellationToken)
     {
         var platform = await platformRepository.GetByIdAsync(id, cancellationToken);
@@ -32,6 +32,6 @@ public class PlatformsController : ControllerBase
         await platformRepository.CreateAsync(platform, cancellationToken);
         await platformRepository.SaveChangesAsync(cancellationToken);
 
-        return Ok();
+        return CreatedAtRoute(nameof(GetById), new { id = platform.Id }, platform.ToResponse());
     }
 }
