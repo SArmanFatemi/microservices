@@ -1,0 +1,25 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@hostname=localhost
+@port=7000
+@host=http://{{hostname}}:{{port}}/api/platforms
+
+###
+// Get platform by id
+GET {{host}}/1
+
+###
+// GET ALL PLATFORMS
+
+GET {{host}}
+
+###
+// Create Platoform
+POST {{host}}
+Content-Type: application/json
+
+{
+    "name": "dotnet",
+    "publisher": "Microsoft",
+    "cost": "0"
+}
