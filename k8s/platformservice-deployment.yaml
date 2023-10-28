@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platformservice-deployment
+
+spec:
+  # Defining the number of replicas for the deployment pod
+  replicas: 1
+
+  # Defining the selector for the deployment pod
+  selector:
+    matchLabels:
+      app: platformservice
+
+  # Defining the template for the deployment pod
+  template:
+    metadata:
+      labels:
+        app: platformservice
+    spec:
+      containers:
+      - name: platformservice
+        image: sarmanfatemi/lesjackson.platformservice:latest
