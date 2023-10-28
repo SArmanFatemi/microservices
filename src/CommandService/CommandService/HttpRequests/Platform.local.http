@@ -1,0 +1,10 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@hostname=localhost
+@port=6050
+@host=http://{{hostname}}:{{port}}/api/commands/platforms
+
+###
+// Test inbound connection
+POST {{host}}
+Content-Type: application/json
