@@ -1,5 +1,6 @@
 using PlatformService.Data;
 using PlatformService.Persistence;
+using PlatformService.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence();
 builder.Services.AddDataServices();
+builder.Services.AddOptions(builder.Configuration);
 
 var app = builder.Build();
 
