@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commandservice-deployment
+
+spec:
+  # Defining the number of replicas for the deployment pod
+  replicas: 1
+
+  # Defining the selector for the deployment pod
+  selector:
+    matchLabels:
+      app: commandservice
+
+  # Defining the template for the deployment pod
+  template:
+    metadata:
+      labels:
+        app: commandservice
+    spec:
+      containers:
+      - name: commandservice
+        image: sarmanfatemi/lesjackson.commandservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: commandservice-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: commandservice
+  ports:
+  - name: commandservice
+    protocol: TCP
+    port: 80
+    targetPort: 80
+
